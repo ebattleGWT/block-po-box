@@ -1,4 +1,4 @@
-var shippingStep = 'step=contact_information';
+  var shippingStep = 'step=contact_information';
 var isShippingStep = window.location.href.indexOf(shippingStep) !== -1;
 if (isShippingStep){
   document.addEventListener('DOMContentLoaded', function() {
@@ -7,7 +7,7 @@ if (isShippingStep){
       continueButton.addEventListener('click', function(event) {
         var addressField1 = document.querySelector('#checkout_shipping_address_address1');
         var addressField2 = document.querySelector('#checkout_shipping_address_address2');
-        var poBoxRegex = /P\s*\.?\s*O\s*\.?\s*BOX|P\s*\.?\s*O|PO\s*\.?\s*BOX|PO\s*BOX|POST\s*OFFICE\s*BOX/i;
+        var poBoxRegex = /(P(\.|O(\.|st)?)?(\s+B(ox)?)?)\s+\d+/i;
         if ((addressField1 && /(P\.?\s?O\.?|PO|Box)\s?\d+/i.test(addressField1.value)) || 
           (addressField2 && /(P\.?\s?O\.?|PO|Box)\s?\d+/i.test(addressField2.value))) {
           alert('No PO Boxes allowed. Please update your mailing address.');
@@ -17,7 +17,6 @@ if (isShippingStep){
     }
   });
 }
-
 var billingStep = 'step=payment_method';
 var isBillingStep = window.location.href.indexOf(billingStep) !== -1;
 if (isBillingStep) {
@@ -27,7 +26,7 @@ if (isBillingStep) {
       continueButton.addEventListener('click', function(event) {
         var addressField3 = document.querySelector('#checkout_billing_address_address1');
         var addressField4 = document.querySelector('#checkout_billing_address_address2');
-        var poBoxRegex2 = /P\s*\.?\s*O\s*\.?\s*BOX|P\s*\.?\s*O|PO\s*\.?\s*BOX|PO\s*BOX|POST\s*OFFICE\s*BOX/i;
+        var poBoxRegex2 = /(P(\.|O(\.|st)?)?(\s+B(ox)?)?)\s+\d+/i;
         if ((addressField3 && poBoxRegex2.test(addressField3.value)) || 
           (addressField4 && poBoxRegex2.test(addressField4.value))) {
           alert('No PO Boxes allowed. Please update your billing address.');
